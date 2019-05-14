@@ -7,3 +7,9 @@ This program enables SeDebugPrivilege and then sets its own process as Windows C
 
 ## EnumAllHandles
 This program enumerates all the handles from all the processes using a call to the native API NtQuerySystemInformation.
+
+## ImpersonateNtlmNegotiation	
+This program is a client-server example of how a server can impersonate client through SSPI connections using ImpersonateSecurityContext.
+
+## ImpersonationPipeLine		
+This program is a client-server example of how a server can impersonate client through named pipe connections using ImpersonateNamedPipeClient.
