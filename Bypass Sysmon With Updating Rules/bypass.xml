@@ -1,0 +1,44 @@
+<Sysmon schemaversion="4.21">
+	<!--SYSMON META CONFIG-->
+	<HashAlgorithms>md5,sha256</HashAlgorithms> <!-- Both MD5 and SHA256 are the industry-standard algorithms for identifying files -->
+	<CheckRevocation/> <!-- Check loaded drivers, log if their code-signing certificate has been revoked, in case malware stole one to sign a kernel driver -->
+	<EventFiltering>
+			<ProcessAccess onmatch="include">
+			    <TargetImage condition="is">C:\Windows\System32\BypassEDR.EDR1</TargetImage>
+			</ProcessAccess>
+
+			<ProcessCreate onmatch="include">
+				<Image condition="is"> C:\Windows\System32\BypassEDR.EDR2</Image>
+			</ProcessCreate>
+
+			<ProcessTerminate onmatch="include">
+				<Image condition="is">C:\Windows\system32\BypassEDR.EDR</Image>
+			</ProcessTerminate>
+
+			<NetworkConnect onmatch="include">
+				<Image condition="image">BypassEDR.EDR3</Image>
+			</NetworkConnect>
+
+		
+			<FileCreate onmatch="include">
+					<TargetFilename condition="contains">BypassEDR5</TargetFilename>
+			</FileCreate>
+
+			<RegistryEvent onmatch="include">
+				<TargetObject condition="contains">BypassEDR6</TargetObject>
+			</RegistryEvent>
+		
+			<DriverLoad onmatch="include">
+				<Signature condition="begin with">BypassEDR7</Signature>
+			</DriverLoad>
+		
+			<CreateRemoteThread onmatch="include">
+				<SourceImage condition="is">C:\Windows\system32\BypassEDR.EDR8</SourceImage>
+			</CreateRemoteThread>
+
+			<DnsQuery onmatch="include">
+				<QueryName condition="end with">.bypassEDR.</QueryName>
+			</DnsQuery>
+
+	</EventFiltering>
+</Sysmon>
