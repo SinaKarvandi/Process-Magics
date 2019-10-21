@@ -13,3 +13,6 @@ This program is a client-server example of how a server can impersonate client t
 
 ## ImpersonationPipeLine		
 This program is a client-server example of how a server can impersonate client through named pipe connections using ImpersonateNamedPipeClient.
+
+## Bypass Sysmon With Updating Rules
+This project aims to bypass Sysmon's "16. Sysmon config states change" by directly sending update IOCTL to Sysmon's driver and as a result, completely bypasses Sysmon.
